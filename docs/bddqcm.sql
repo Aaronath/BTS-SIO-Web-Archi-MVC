@@ -28,14 +28,17 @@ SET time_zone = "+00:00";
 -- Structure de la table `etudiants`
 --
 
-CREATE TABLE `etudiants` (
-  `idEtudiant` int(11) NOT NULL,
-  `login` varchar(15) NOT NULL,
-  `motDePasse` smallint(15) NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `etudiants`;
+CREATE TABLE IF NOT EXISTS `etudiants` (
+    `idEtudiant` int(11) NOT NULL AUTO_INCREMENT,
+    `login` varchar(15) NOT NULL,
+    `motDePasse` varchar(50) NOT NULL,
+    `nom` varchar(50) NOT NULL,
+    `prenom` varchar(50) NOT NULL,
+    `email` varchar(50) NOT NULL,
+    PRIMARY KEY (`idEtudiant`),
+    UNIQUE KEY `idEtudiant` (`idEtudiant`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `etudiants`

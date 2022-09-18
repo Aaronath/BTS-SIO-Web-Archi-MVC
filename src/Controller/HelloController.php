@@ -2,8 +2,8 @@
 
 namespace Quizz\Controller;
 
+use Quizz\Core\View\TwigCore;
 use Quizz\Model\QuestionnaireModel;
-use Quizz\Service\TwigService;
 
 class HelloController implements \Quizz\Core\Controller\ControllerInterface
 {
@@ -18,7 +18,7 @@ class HelloController implements \Quizz\Core\Controller\ControllerInterface
 
     public function outputEvent()
     {
-        $twig = TwigService::getEnvironment();
+        $twig = TwigCore::getEnvironment();
 
         echo $twig->render('home/hello.html.twig', [
             'param' => $this->param

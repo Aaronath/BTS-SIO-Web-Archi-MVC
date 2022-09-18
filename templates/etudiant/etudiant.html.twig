@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block titre %}Update {{ etudiant.getEmail }}{% endblock %}
+
+{% block content %}
+    <h1>Modifier les données de {{ etudiant.getPrenom }} {{ etudiant.getNom }}</h1>
+    <form method="post" action="">
+        <label>Nom : </label>
+        <input type="text" name="nom" value="{{ etudiant.getNom }}">
+
+        <label>Prénom: </label>
+        <input type="text" name="prenom" value="{{ etudiant.getPrenom }}">
+
+        <label>E-Mail : </label>
+        <input type="email" name="email" value="{{ etudiant.getEmail }}">
+
+        <label>Login : </label>
+        <input type="text" name="login" value="{{ etudiant.getLogin }}">
+
+        <label>Mot de passe : </label>
+        <input type="password" name="password" value="{{ etudiant.getMotDePasse }}">
+
+        <input type="submit" value="Modifier">
+        <input type="reset">
+    </form>
+    <a href="/etudiant">Retour</a>
+{% endblock %}

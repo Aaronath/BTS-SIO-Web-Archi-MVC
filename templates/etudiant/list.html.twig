@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Liste des étudiants</h1>
+        <table style="border: black 2px solid;">
+            <caption>Liste de étudiants</caption>
+
+            <thead> <!-- En-tête du tableau -->
+            <tr style="border: black 2px solid;">
+                <th style="border: black 2px solid;">Nom</th>
+                <th style="border: black 2px solid;">Prenom</th>
+                <th style="border: black 2px solid;">E-Mail</th>
+                <th style="border: black 2px solid;">Login</th>
+                <th style="border: black 2px solid;">Infos (Modifiables)</th>
+                <th style="border: black 2px solid;">Supprimer</th>
+            </tr>
+            </thead>
+
+            <tbody > <!-- Corps du tableau -->
+    {% for etudiant in etudiants %}
+            <tr style="border: black 2px solid;">
+                <td style="border: black 2px solid;">{{ etudiant.getNom }}</td>
+                <td style="border: black 2px solid;">{{ etudiant.getPrenom }}</td>
+                <td style="border: black 2px solid;">{{ etudiant.getEmail }}</td>
+                <td style="border: black 2px solid;">{{ etudiant.getLogin }}</td>
+                <td style="border: black 2px solid;">
+                    <a href="/etudiant/{{ etudiant.getIdEtudiant }}">Update</a>
+                </td>
+                <td style="border: black 2px solid;">
+                    <a style="color: red;" href="/etudiant/{{ etudiant.getIdEtudiant }}/del">Delete</a>
+                </td>
+            </tr>
+    {% endfor %}
+
+            </tbody>
+        </table>
+    <button style="background-color: dodgerblue; border-radius: 20%; padding: 10px;"><a style="color: white; text-decoration: none;" href="etudiant/add">+ Ajouter un étudiant</a></button>
+
+{% endblock %}
