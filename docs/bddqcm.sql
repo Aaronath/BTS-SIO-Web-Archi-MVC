@@ -338,8 +338,8 @@ ALTER TABLE `reponse`
 -- Contraintes pour la table `qcmfait`
 --
 ALTER TABLE `qcmfait`
-  ADD CONSTRAINT `qcmfait_ibfk_1` FOREIGN KEY (`idQuestionnaire`) REFERENCES `questionnaire` (`idQuestionnaire`),
-  ADD CONSTRAINT `qcmfait_ibfk_2` FOREIGN KEY (`idEtudiant`) REFERENCES `etudiants` (`idEtudiant`);
+  ADD CONSTRAINT `qcmfait_ibfk_1` FOREIGN KEY (`idQuestionnaire`) REFERENCES `questionnaire` (`idQuestionnaire`) ON DELETE CASCADE,
+  ADD CONSTRAINT `qcmfait_ibfk_2` FOREIGN KEY (`idEtudiant`) REFERENCES `etudiants` (`idEtudiant`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `questionquestionnaire`

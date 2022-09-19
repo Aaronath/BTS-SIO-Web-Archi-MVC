@@ -35,13 +35,14 @@ class ViewController implements \Quizz\Core\Controller\ControllerInterface
                 $etudiant->setLogin($this->posts["login"]);
                 $etudiant->setEmail($this->posts["email"]);
 
-                $etudiantModel->updateById($this->id, $etudiant);
+                $error = $etudiantModel->updateById($this->id, $etudiant);
 
         }
             return TwigCore::getEnvironment()->render(
                 'etudiant/etudiant.html.twig',
                 [
-                    'etudiant' => $etudiantModel->getFechId((int) $this->id)
+                    'etudiant' => $etudiantModel->getFechId((int) $this->id),
+                    'error' => $error
                 ]);
         } else {
             return null;
