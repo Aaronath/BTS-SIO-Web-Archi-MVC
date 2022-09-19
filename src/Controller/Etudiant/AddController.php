@@ -19,7 +19,7 @@ class addController implements \Quizz\Core\Controller\ControllerInterface
 
     public function outputEvent()
     {
-        $error = "Bienvenue ! ";
+        $error = "";
 
         if (isset($this->posts) and !empty($this->posts)) {
             $etudiant = new Etudiant();

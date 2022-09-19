@@ -21,6 +21,7 @@ class ViewController implements \Quizz\Core\Controller\ControllerInterface
 
     public function outputEvent()
     {
+        $error = "";
         // Obj connect Mysql -> Obj Questionnaire
         $etudiantModel = new EtudiantModel();
 

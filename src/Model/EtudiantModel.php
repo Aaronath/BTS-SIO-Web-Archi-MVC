@@ -64,10 +64,14 @@ class EtudiantModel
         $requete->execute();
         $result = $requete->rowCount();
 
-        if ($result > 0 or !filter_var($etudiant->getEmail(), FILTER_VALIDATE_EMAIL)) {
+        $requete = $this->bdd->prepare("SELECT email FROM etudiants WHERE idEtudiant = {$id}");
+        $requete->execute();
+        $currentMail = $requete->fetch();
+
+        if (($result > 0 and $etudiant->getEmail() != $currentMail[0]) or !filter_var($etudiant->getEmail(), FILTER_VALIDATE_EMAIL)) {
             $requete = $this->bdd->prepare("UPDATE etudiants SET login = '{$etudiant->getLogin()}', motDePasse = '{$etudiant->getMotDePasse()}', nom = '{$etudiant->getNom()}', prenom = '{$etudiant->getPrenom()}' where idEtudiant = {$id}");
             $requete->execute();
-            $error = "Email non modifié, déjà utilisé ou invalide... Les autres données ont cependant été mis à jour !";
+            $error = "Email déjà utilisé ou invalide... Les autres données ont cependant été mis à jour !";
         } else {
             $requete = $this->bdd->prepare("UPDATE etudiants SET login = '{$etudiant->getLogin()}', motDePasse = '{$etudiant->getMotDePasse()}', nom = '{$etudiant->getNom()}', prenom = '{$etudiant->getPrenom()}', email = '{$etudiant->getEmail()}' where idEtudiant = {$id}");
             $requete->execute();

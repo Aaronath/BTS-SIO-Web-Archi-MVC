@@ -3,26 +3,40 @@
 {% block titre %}Update {{ etudiant.getEmail }}{% endblock %}
 
 {% block content %}
-    {{ error }}
     <h1>Modifier les données de {{ etudiant.getPrenom }} {{ etudiant.getNom }}</h1>
-    <form method="post" action="">
+    {% if error != "" %}
+        <h3 class="alert alert-info w-25">{{ error }}</h3>
+    {% endif %}
+    <form class="w-50" method="post" action="">
+        <div class="form-group m-5">
         <label>Nom : </label>
-        <input type="text" name="nom" value="{{ etudiant.getNom }}">
+        <input class="form-control" type="text" name="nom" value="{{ etudiant.getNom }}">
+        </div>
 
+        <div class="form-group m-5">
         <label>Prénom: </label>
-        <input type="text" name="prenom" value="{{ etudiant.getPrenom }}">
+        <input class="form-control" type="text" name="prenom" value="{{ etudiant.getPrenom }}">
+        </div>
 
+        <div class="form-group m-5">
         <label>E-Mail : </label>
-        <input type="email" name="email" value="{{ etudiant.getEmail }}">
+        <input class="form-control" type="email" name="email" value="{{ etudiant.getEmail }}">
+        </div>
 
+        <div class="form-group m-5">
         <label>Login : </label>
-        <input type="text" name="login" value="{{ etudiant.getLogin }}">
+        <input class="form-control" type="text" name="login" value="{{ etudiant.getLogin }}">
+        </div>
 
+        <div class="form-group m-5">
         <label>Mot de passe : </label>
-        <input type="password" name="password" value="{{ etudiant.getMotDePasse }}">
+        <input class="form-control" type="password" name="password" value="{{ etudiant.getMotDePasse }}">
+        </div>
 
-        <input type="submit" value="Modifier">
-        <input type="reset">
+        <div class="form-group m-5">
+            <button class="btn btn-outline-light" type="submit">Modifier</button>
+            <button class="btn btn-outline-light" type="reset">Annuler</button>
+        </div>
     </form>
-    <a href="/etudiant">Retour</a>
+    <a href="/etudiant"><button class="btn btn-outline-light">Retour</button></a>
 {% endblock %}
